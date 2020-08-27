@@ -1,0 +1,51 @@
+.heading h1 {
+    background-color: purple;
+    color: rgb(196, 196, 196)
+}
+.cartDetails{
+    display: inline-block;
+    padding: 20px;
+
+   
+}
+.cartDetails h1{
+    background-color: rgba(189, 74, 189, 0.856);
+    font-size: 30px;
+}
+.cart{
+    text-align: center;
+    
+}
+.reviewBox{
+   background-color: white;
+   width: 700px;
+   padding: 10px;
+   border-radius: 30px;
+   border: solid 1px rgb(172, 172, 172);
+   box-shadow: -4px -4px rgb(194, 194, 194);
+  
+}
+.lists{
+    background-color: rgba(187, 187, 187, 0.774);
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 20px;
+    color: black;
+   
+  
+  
+}
+input{
+    height: 30px;
+    width: 400px;
+   
+    
+}
+button{
+    background-color: purple;
+    box-shadow: 0px 2px rgb(116, 114, 114);
+
+}
+h2{
+    text-align: center;
+}

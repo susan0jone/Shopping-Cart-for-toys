@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta>
+    <meta charset="UTF-8">
+    <title>Shopping Cart in Vue.js</title>
+    <link rel = "stylesheet" href="vue.css">
+  </meta>
+
+  <body>
+    <!-- heading -->
+    <div class="heading"><h1>Online Shopping Cart For Toys</h1></div> 
+    <div id="hello-world-app">
+      <!-- view -->
+      <!-- element where the vue library is injected -->
+      <ul class="cart">
+        <!-- code for iterating through every value and key respectively in object 'toys' -->
+        <li class="cartDetails" v-for= "(toy , details) in toys">
+          <h1>{{details}}</h1>
+          <!-- display of key or property -->
+          <ul>
+             <!-- code for iterating through every value and key respectively 
+              in value of the object 'toys' -->
+            <li class="cartDetails" v-for= "(info, size) in toy">
+              <!-- interpolation(data binding) i.e displaying data 
+                that's defined within the components's logic-->
+              <p>Size: {{size}}</p>
+              <p> <img v-bind:src = "info.photo" height="300" width="300"></p>
+              <p>Price: {{info.price}} Naira</p>
+              <p>Ratings:{{rateCount}}
+                <!-- ratings increment and decrement button, when clicked, calls a function
+                that increments and decrements the ratings -->
+                <button v-on:click = "rateIncrement">+</button>
+                <button v-on:click = "rateDecrement">-</button></span> 
+              </p>
+              <span>Quantity:  {{count}}
+                <!-- ratings increment and decrement button, when clicked, calls a function
+                that increments and decrements the quantity -->
+               <button v-on:click = "increment">+</button>
+               <button v-on:click = "decrement">-</button>
+              </span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="reviewBox">
+        <h2 ><i>Reviews</i></h2>
+        <!-- code for iterating through and dispaying every string element 
+          in the reviews array -->
+        <div class="lists" v-for = "review in reviews">
+          <p>{{review}}</p>
+        </div>
+        <!-- form that takes input from a user and calls a function
+           that adds the input to the reviews array -->
+        <form @submit.prevent = "addReview">
+          <input type="text" placeholder="add a comment here" class="text" v-model="newReview"><br/>
+          <button >add</button>      
+        </form>
+      </div>
+    </div>
+    <!-- adding vue's library to html. adding it to the end of the body tag 
+    so it loads all the content of then webpage before loading the script tag -->
+    <script
+      src="//cdnjs.cloudflare.com/ajax/libs/vue/2.1.6/vue.min.js">
+    </script>
+
+    <script>
+      // vue initialisation
+    var app = new Vue({
+      el: "#hello-world-app",
+      // model
+      data : {
+        count: 0,
+        rateCount: 0,
+        newReview: null,
+        reviews:['beautiful, long-lasting toys that the children enjoy'],
+        toys: {
+          Bears:{
+            Small: {
+              photo: "bear.jpg",
+              price: 1000,
+              },
+            Medium: {
+              photo: "bear2.jpg",
+              price: 1500
+              }, 
+            Large: {
+              photo:"bear3.jpg",
+              price: 3000
+              }
+          },
+          Figurines: {
+            Small: {
+              photo:"figurine.jpg",
+              price: 5000
+              },
+            Medium: {
+              photo:"figurine2.jpg",
+              price: 3500
+              },
+            Large: {
+              photo:"figurine3.jpg",
+              ratings: 4.8,
+              price: 6000
+              }
+            }
+        }
+      },
+      // logic
+      methods : {
+        rateIncrement: function(){
+          if(this.rateCount < 5){
+          this.rateCount +=1;
+          }
+        },
+        rateDecrement: function(){
+          if(this.rateCount > 0){
+          this.rateCount -=1;
+          }
+        },
+        increment: function(){
+          this.count +=1;
+        },
+        decrement: function(){
+          this.count -=1;
+        },
+        addReview: function(productReview){
+          this.reviews.push(this.newReview);
+          this.newReview = null;
+        }
+      }
+    });
+    </script>
+  </body>
+</html>
